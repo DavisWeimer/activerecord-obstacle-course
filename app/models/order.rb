@@ -3,4 +3,14 @@ class Order < ApplicationRecord
 
   has_many :order_items
   has_many :items, through: :order_items
+
+  def self.orders_between(attr, range_low, range_high)
+    where("#{attr} >= ?", range_low).where("#{attr} <= ?", range_high)
+  end
+
+  def self.less_than(attr, value)
+    require 'pry'; binding.pry
+    where("#{attr}": 0...value)
+  end
+
 end
