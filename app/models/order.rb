@@ -9,7 +9,6 @@ class Order < ApplicationRecord
   end
 
   def self.less_than(attr, value)
-    require 'pry'; binding.pry
     where("#{attr}": 0...value)
   end
 
